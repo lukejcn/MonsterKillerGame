@@ -41,9 +41,16 @@ function strongAttackHandler() {
 }
 
 function healPlayerHandler() {
-     increasePlayerHealth(HEAL_VALUE)
-     currentPlayerHealth += HEAL_VALUE
-     endRound()
+    let healValue
+    if (currentPlayerHealth >= chosenMaxLife - HEAL_VALUE) {
+        alert('100% Health')
+        healValue = chosenMaxLife - currentPlayerHealth
+    } else {
+        healValue = HEAL_VALUE
+    }
+    increasePlayerHealth(healValue)
+    currentPlayerHealth += healValue
+    endRound()
 }
 
 attackBtn.addEventListener('click', attackHandler)
