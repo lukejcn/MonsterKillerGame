@@ -10,13 +10,14 @@ adjustHealthBars(chosenMaxLife)
 function attackHandler() {
     const damage = dealMonsterDamage(ATTACK_VALUE)
     currentMonsterHealth -= damage
-    if (currentMonsterHealth <= 0) {
-        alert('You Won')
-    }
     const playerdamage = dealPlayerDamage(MONSTER_ATTACK_VALUE)
     currentPlayerHealth -= playerdamage
-    if (currentPlayerHealth <= 0) {
+    if (currentMonsterHealth <= 0 && currentPlayerHealth > 0) {
+        alert('You Won')
+    } else if (currentPlayerHealth <= 0 && currentMonsterHealth > 0) {
         alert('You lose :(')
+    } else if (currentMonsterHealth <= 0 && currentPlayerHealth <= 0) {
+        alert('draw')
     }
 }
 
